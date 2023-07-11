@@ -10,6 +10,9 @@ const validatedValue = (inputValue) => {
   if (String(inputValue).includes("0")) {
     throw new Error("1부터 9까지의 숫자만 입력해주세요.");
   }
+  if (inputValue.length > 3) {
+    throw new Error("숫자가 3자리를 초과하였습니다. 숫자를 3자리로 입력해주세요.");
+  }
 };
 
 module.exports = validatedValue;
