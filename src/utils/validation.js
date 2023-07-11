@@ -13,6 +13,9 @@ const validatedValue = (inputValue) => {
   if (inputValue.length > 3) {
     throw new Error("숫자가 3자리를 초과하였습니다. 숫자를 3자리로 입력해주세요.");
   }
+  if (inputValue.length < 3) {
+    throw new Error(`현재 ${inputValue.length}자리를 입력하셨습니다. 숫자를 3자리로 입력해주세요.`);
+  }
 };
 
 module.exports = validatedValue;
