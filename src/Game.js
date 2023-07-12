@@ -1,7 +1,7 @@
 const MissionUtils = require("@woowacourse/mission-utils");
 const OutputView = require("./View/OutputView");
 const Computer = require("./Computer");
-const { assignUserNumber } = require("./utils/game");
+const { genCount, printCompareResult, assignUserNumber } = require("./utils/game");
 
 class Game {
  constructor() {
@@ -21,7 +21,11 @@ class Game {
   const param = { callback, userNumbers: this.userNumbers };
   MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (inputValue) => assignUserNumber({ ...param, inputValue }));
  }
- compare() {}
+ compare() {
+  const [ball, strike] = genCount(this.computerNumbers, this.userNumbers);
+  const [userSelectNumber, compare, end] = [this.userSelectNumber.bind(this), this.compare.bind(this), this.end.bind(this)];
+  printCompareResult({ ball, strike, userSelectNumber, compare, end });
+ }
 }
 
 module.exports = Game;

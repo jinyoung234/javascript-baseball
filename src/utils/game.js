@@ -1,5 +1,31 @@
 const validatedValue = require("../utils/validation");
 
+const isStrike = (computerNumber, userNumber) => {
+ if (computerNumber === userNumber) {
+  return true;
+ }
+ return false;
+};
+
+const isBall = (computerNumbers, userNumber) => {
+ if (computerNumbers.includes(userNumber)) {
+  return true;
+ }
+ return false;
+};
+
+const genCount = (computerNumbers, userNumbers) => {
+ let [ball, strike] = [0, 0];
+ computerNumbers.forEach((computerNumber, i) => {
+  const userNumber = userNumbers[i];
+  if (isStrike(computerNumber, userNumber)) strike++;
+  else if (isBall(computerNumbers, userNumber)) ball++;
+ });
+ return [ball, strike];
+};
+
+const printCompareResult = ({ ball, strike, userSelectNumber, compare, end }) => {};
+
 const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
  validatedValue(inputValue);
  userNumbers.splice(0, 3, ...inputValue.split("").map(Number));
