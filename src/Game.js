@@ -1,7 +1,8 @@
-const MissionUtils = require("@woowacourse/mission-utils");
 const OutputView = require("./View/OutputView");
 const Computer = require("./Computer");
-const { genCount, printCompareResult, assignUserNumber, processValue } = require("./utils/game");
+const { genCount, printCompareResult } = require("./utils/game");
+const InputView = require("./View/InputView");
+const { handleInputValue, assignUserNumber, processValue } = require("./utils/inputView");
 
 class Game {
  constructor() {
@@ -19,7 +20,7 @@ class Game {
  }
  userSelectNumber(callback) {
   const param = { callback, userNumbers: this.userNumbers };
-  MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (inputValue) => assignUserNumber({ ...param, inputValue }));
+  InputView.input("숫자를 입력해주세요 : ", handleInputValue(param, assignUserNumber));
  }
  compare() {
   const [ball, strike] = genCount(this.computerNumbers, this.userNumbers);
@@ -29,7 +30,7 @@ class Game {
  end() {
   const param = { start: this.start.bind(this) };
   OutputView.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-  MissionUtils.Console.readLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", (value) => processValue({ ...param, value }));
+  InputView.input("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n", handleInputValue(param, processValue));
  }
 }
 
