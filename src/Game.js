@@ -9,6 +9,7 @@ class Game {
   this.computerNumbers = [];
   this.userNumbers = [];
  }
+
  start() {
   this.computerNumbers = [];
   this.userNumbers = [];
@@ -18,15 +19,18 @@ class Game {
   this.computerNumbers.push(...computer.numbers);
   this.userSelectNumber(() => this.compare());
  }
+
  userSelectNumber(callback) {
   const param = { callback, userNumbers: this.userNumbers };
   InputView.input("숫자를 입력해주세요 : ", handleInputValue(param, assignUserNumber));
  }
+
  compare() {
   const [ball, strike] = genCount(this.computerNumbers, this.userNumbers);
   const [userSelectNumber, compare, end] = [this.userSelectNumber.bind(this), this.compare.bind(this), this.end.bind(this)];
   printCompareResult({ ball, strike, userSelectNumber, compare, end });
  }
+ 
  end() {
   const param = { start: this.start.bind(this) };
   OutputView.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

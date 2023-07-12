@@ -1,5 +1,5 @@
 const isTypeOfNaN = (inputValue) => {
- if (Number.isNaN(inputValue) || isNaN(inputValue)) return true;
+ if (Number.isNaN(inputValue)) return true;
  return false;
 };
 

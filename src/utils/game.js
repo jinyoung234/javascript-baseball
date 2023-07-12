@@ -18,8 +18,8 @@ const genCount = (computerNumbers, userNumbers) => {
  let [ball, strike] = [0, 0];
  computerNumbers.forEach((computerNumber, i) => {
   const userNumber = userNumbers[i];
-  if (isStrike(computerNumber, userNumber)) strike++;
-  else if (isBall(computerNumbers, userNumber)) ball++;
+  if (isStrike(computerNumber, userNumber)) strike += 1;
+  else if (isBall(computerNumbers, userNumber)) ball += 1;
  });
  return [ball, strike];
 };

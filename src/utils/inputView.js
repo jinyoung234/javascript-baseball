@@ -1,11 +1,9 @@
 const { Console } = require("@woowacourse/mission-utils");
 const validatedValue = require("./validation");
 
-const handleInputValue = (param, callback) => {
- return function (inputValue) {
+const handleInputValue = (param, callback) => function (inputValue) {
   callback({ ...param, inputValue });
  };
-};
 
 const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
  validatedValue(inputValue);

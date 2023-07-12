@@ -4,6 +4,7 @@ class Computer {
  constructor() {
   this.numbers = [];
  }
+
  assignNumber() {
   genComputerNumbers(this.numbers);
  }
