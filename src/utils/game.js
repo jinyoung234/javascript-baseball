@@ -1,6 +1,4 @@
-const MissionUtils = require("@woowacourse/mission-utils");
 const OutputView = require("../View/OutputView");
-const validatedValue = require("../utils/validation");
 
 const isStrike = (computerNumber, userNumber) => {
  if (computerNumber === userNumber) {
@@ -53,20 +51,4 @@ const printCompareResult = ({ ball, strike, userSelectNumber, compare, end }) =>
  }
 };
 
-const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
- validatedValue(inputValue);
- userNumbers.splice(0, 3, ...inputValue.split("").map(Number));
- callback();
-};
-
-const processValue = ({ value, start }) => {
- if (value === "1") {
-  start();
-  return;
- }
- if (value === "2") {
-  MissionUtils.Console.close();
- }
-};
-
-module.exports = { genCount, printCompareResult, assignUserNumber, processValue };
+module.exports = { genCount, printCompareResult };
