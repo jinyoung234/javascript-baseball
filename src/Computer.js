@@ -1,18 +1,12 @@
-const MissionUtils = require("@woowacourse/mission-utils");
+const genComputerNumbers = require("./utils/computer");
 
 class Computer {
-  constructor() {
-    this.numbers = [];
-  }
-  selectThreeNumber() {
-    while (this.numbers.length < 3) {
-      const number = MissionUtils.Random.pickNumberInRange(1, 9);
-      const isDuplicate = this.numbers.includes(number);
-      if (!isDuplicate) {
-        this.numbers.push(number);
-      }
-    }
-  }
+ constructor() {
+  this.numbers = [];
+ }
+ assignNumber() {
+  genComputerNumbers(this.numbers);
+ }
 }
 
 module.exports = Computer;
