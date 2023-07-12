@@ -31,6 +31,11 @@ const printCompareResult = ({ ball, strike, userSelectNumber, compare, end }) =>
   userSelectNumber(() => compare());
   return;
  }
+ if (ball > 0 && strike === 0) {
+  OutputView.print(`${ball}볼`);
+  userSelectNumber(() => compare());
+  return;
+ }
 };
 
 const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
