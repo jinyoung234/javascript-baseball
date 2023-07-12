@@ -1,3 +1,4 @@
+const MissionUtils = require("@woowacourse/mission-utils");
 const OutputView = require("../View/OutputView");
 const validatedValue = require("../utils/validation");
 
@@ -58,4 +59,14 @@ const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
  callback();
 };
 
-module.exports = { genCount, printCompareResult, assignUserNumber };
+const processValue = ({ value, start }) => {
+ if (value === "1") {
+  start();
+  return;
+ }
+ if (value === "2") {
+  MissionUtils.Console.close();
+ }
+};
+
+module.exports = { genCount, printCompareResult, assignUserNumber, processValue };
