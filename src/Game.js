@@ -26,6 +26,9 @@ class Game {
   const [userSelectNumber, compare, end] = [this.userSelectNumber.bind(this), this.compare.bind(this), this.end.bind(this)];
   printCompareResult({ ball, strike, userSelectNumber, compare, end });
  }
+ end() {
+  OutputView.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+ }
 }
 
 module.exports = Game;

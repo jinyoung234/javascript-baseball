@@ -46,6 +46,10 @@ const printCompareResult = ({ ball, strike, userSelectNumber, compare, end }) =>
   userSelectNumber(() => compare());
   return;
  }
+ if (ball === 0 && strike === 3) {
+  OutputView.print("3스트라이크");
+  end();
+ }
 };
 
 const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
