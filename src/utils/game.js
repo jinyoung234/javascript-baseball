@@ -1,3 +1,4 @@
+const OutputView = require("../View/OutputView");
 const validatedValue = require("../utils/validation");
 
 const isStrike = (computerNumber, userNumber) => {
@@ -24,7 +25,13 @@ const genCount = (computerNumbers, userNumbers) => {
  return [ball, strike];
 };
 
-const printCompareResult = ({ ball, strike, userSelectNumber, compare, end }) => {};
+const printCompareResult = ({ ball, strike, userSelectNumber, compare, end }) => {
+ if (ball === 0 && strike === 0) {
+  OutputView.print("낫싱");
+  userSelectNumber(() => compare());
+  return;
+ }
+};
 
 const assignUserNumber = ({ inputValue, userNumbers, callback }) => {
  validatedValue(inputValue);
