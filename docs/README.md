@@ -1,0 +1,58 @@
+# 구현할 기능 목록
+
+## 기능 목록
+
+- 프로그램 실행 후 초기 화면 (start-phase)
+
+  - `숫자 야구 게임을 시작합니다.` 메세지 출력 후 바로 숫자 야구 게임을 시작한다.
+
+- 숫자 야구 게임 플레이 기능 (play-phase)
+
+  - 상대방(컴퓨터)이 무작위로 서로 다른 3개의 수를 정한다.
+  - `숫자를 입력해주세요 : ` 메세지를 출력하고 사용자 입력을 받는다.
+  - 사용자 입력이 서로 다른 3자리의 수가 아닐 경우 예외를 발생시켜 프로그램을 종료한다.
+  - 사용자 입력이 주어지면 `볼`, `스트라이크`, `낫싱` 을 판별한 결과를 반환한다.
+    > 만약 `볼` 과 `스트라이크` 가 동시에 발생한 경우 `볼` → `스트라이크` 순서로 표시한다.
+  - 사용자 입력을 `3스트라이크` 로 판별이 될 때 까지 입력받는다.
+  - `3스트라이크` 판별 시 `3개의 숫자를 모두 맞혔습니다! 게임 종료` 메세지를 출력하고 게임을 종료한다.
+
+- 숫자 야구 게임 종료 후 기능 (end-phase)
+  - `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.` 메세지 출력 후 사용자로 부터 `1` 또는 `2` 의 입력을 받는다.
+  - 사용자 입력이 `1` 이면 숫자 야구 게임을 다시 시작한다.
+  - 사용자 입력이 `2` 이면 프로그램을 종료한다.
+
+## 프로젝트 환경 및 코드 스타일
+
+- 프로젝트 환경
+
+  - Node.js 14 버전 사용
+
+- 코드 스타일
+
+  - <details>
+      <summary>eslint 사용</summary>
+
+    `npm install --save-dev eslint` 로 설치하고 .eslintrc.js 파일을 생성하여 코드 스타일을 정의한다.
+    </details>
+
+  - <details>
+      <summary>prettier 사용</summary>
+
+    `npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier` 로 설치한다.
+
+    > `eslint-config-prettier`: prettier와 겹치는 eslint 룰을 비활성화한다.
+    >
+    > `eslint-plugin-prettier`: prettier에서 발생한 오류를 eslint 오류로 표시해준다.
+
+    .eslintrc.js의 `extends: [...]` 에 `'plugin:prettier/recommended'` 를 마지막에 추가한다.
+
+    .prettierrc 파일을 생성한 후 prettier 규칙을 추가한다.
+    </details>
+
+  - <details>
+      <summary>airbnb 규칙 사용</summary>
+
+    `npx install-peerdeps --dev eslint-config-airbnb` 명령으로 설치한다.
+
+    .eslintrc.js의 `extends: [...]` 에 `'airbnb'` 를 추가한다.
+    </details>
