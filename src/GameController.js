@@ -1,6 +1,7 @@
 const { GAME } = require('./constants/message');
 const Computer = require('./domain/Computer');
 const User = require('./domain/User');
+const Validator = require('./validator');
 const OutputView = require('./view/OutputView');
 
 class GameController {
@@ -13,7 +14,9 @@ class GameController {
     OutputView.print(GAME.RUN);
     this.computer.defineValue();
     const userValue = yield User.userSelectValue;
-    this.user.setValue(GameController.parseValue(userValue));
+    const parseUserValue = GameController.parseValue(userValue);
+    this.user.setValue(parseUserValue);
+    Validator.validateNumber(parseUserValue);
   }
 
   static parseValue(value) {
