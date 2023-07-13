@@ -56,3 +56,7 @@
 
     .eslintrc.js의 `extends: [...]` 에 `'airbnb'` 를 추가한다.
     </details>
+
+## 클래스 다이어 그램
+
+<img width="600" alt="image" src="https://github.com/woowacourse-precourse/javascript-baseball/assets/87177577/0ddac13f-125b-4172-80ba-b44e51fa6892"/>
