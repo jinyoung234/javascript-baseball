@@ -1,8 +1,10 @@
+const { Console } = require('@woowacourse/mission-utils');
 const { GAME } = require('./constants/message');
 const BallComparator = require('./domain/BallComparator');
 const Computer = require('./domain/Computer');
 const User = require('./domain/User');
 const Validator = require('./validator');
+const InputView = require('./view/InputView');
 const OutputView = require('./view/OutputView');
 
 class GameController {
@@ -24,12 +26,14 @@ class GameController {
       this.comparator.compare(this.computer.getValue(), this.user.getValue());
       const [ball, strike] = this.comparator.getResult();
       const isSuccess = GameController.result(ball, strike);
-      if (isSuccess) {
-        GameController.end();
-        break;
-      }
-      console.log(this.user.getValue(), this.computer.getValue());
+      if (isSuccess) break;
     }
+    const userInputValue = yield GameController.end;
+    if (userInputValue === GAME.RESTART) {
+      yield* this.run();
+      return;
+    }
+    GameController.exit();
   }
 
   static parseValue(value) {
@@ -51,6 +55,17 @@ class GameController {
       return false;
     }
     return true;
+  }
+
+  static end(callback) {
+    OutputView.print(GAME.RESULT.SUCCESS);
+    InputView.input(GAME.END, (inputValue) => {
+      callback(inputValue);
+    });
+  }
+
+  static exit() {
+    Console.close();
   }
 }
 
