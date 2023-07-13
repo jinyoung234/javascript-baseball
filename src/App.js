@@ -5,10 +5,13 @@ class App {
     this.controller = new GameController();
   }
 
-  /* eslint-disable class-methods-use-this */
   play() {
     this.controller.run();
   }
 }
+
+const app = new App();
+
+app.play();
 
 module.exports = App;
