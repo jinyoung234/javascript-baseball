@@ -19,7 +19,7 @@ class User {
   }
 
   setValue(value) {
-    this.#userValue.push(...value);
+    this.#userValue = value;
   }
 }
 
