@@ -2,11 +2,13 @@ const { Random } = require('@woowacourse/mission-utils');
 
 class Computer {
   #value;
+
   constructor() {
     this.#value = [];
   }
 
   defineValue() {
+    this.#value = [];
     while (this.#value.length < 3) {
       this.pickNumber();
     }
