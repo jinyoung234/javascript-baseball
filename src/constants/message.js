@@ -2,6 +2,7 @@ const { GAME_TERMS } = require('./gameTerms');
 
 const OUTPUT_MESSAGE = Object.freeze({
   GAME_START: '숫자 야구 게임을 시작합니다.\n',
+  GAME_EXIT: `${GAME_TERMS.BALL.DIGIT}개의 숫자를 모두 맞히셨습니다! 게임 종료`,
 });
 
 const INPUT_MESSAGE = Object.freeze({

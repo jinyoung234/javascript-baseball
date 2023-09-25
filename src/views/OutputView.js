@@ -8,6 +8,10 @@ const OutputView = {
   printStartGame() {
     this.print(OUTPUT_MESSAGE.GAME_START);
   },
+
+  printExitGame() {
+    this.print(OUTPUT_MESSAGE.GAME_EXIT);
+  },
 };
 
 module.exports = OutputView;

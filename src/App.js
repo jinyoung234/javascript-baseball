@@ -3,6 +3,8 @@ const BaseBallGameService = require('./services/BaseBallGameService');
 const { runGenerator } = require('./utils/runGenerator');
 const BallValidator = require('./validator/BallValidator');
 const { OutputView, InputView } = require('./views');
+const { SYMBOLS } = require('./constants/symbols');
+const { GAME_TERMS } = require('./constants/gameTerms');
 
 class App {
   #outputView;
@@ -17,8 +19,16 @@ class App {
     this.#baseballGameService = new BaseBallGameService();
   }
 
+  #printExitGame() {
+    this.#outputView.printExitGame();
+  }
+
   #printStartGame() {
     this.#outputView.printStartGame();
+  }
+
+  #printGameResult(result) {
+    this.#outputView.print(result);
   }
 
   *#inputUserBall() {
@@ -26,7 +36,7 @@ class App {
       const inputUserBall = yield (resolve) =>
         this.#inputView.readUserBalls(resolve);
       BallValidator.validateBall(inputUserBall);
-      return inputUserBall;
+      return inputUserBall.split(SYMBOLS.EMPTY_STRING).map(Number);
     } catch (error) {
       this.#outputView.print(error.message);
       Console.close();
@@ -37,10 +47,23 @@ class App {
     return yield* this.#inputUserBall();
   }
 
+  #getComparisonResult(userBall) {
+    return this.#baseballGameService.calculateComparisonResult(userBall);
+  }
+
+  *#startGame() {
+    while (true) {
+      const userBall = yield* this.#getUserBall();
+      const result = this.#getComparisonResult(userBall);
+      this.#printGameResult(result);
+      if (result === GAME_TERMS.EXIT_CONDITION) break;
+    }
+  }
+
   *#run() {
     this.#printStartGame();
-    const userBall = yield* this.#getUserBall();
-    yield console.log(userBall);
+    yield* this.#startGame();
+    this.#printExitGame();
   }
 
   play() {
