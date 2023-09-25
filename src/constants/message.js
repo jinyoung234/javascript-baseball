@@ -11,12 +11,13 @@ const INPUT_MESSAGE = Object.freeze({
 });
 
 const ERROR_MESSAGE = Object.freeze({
-  EMPTY_BALLS: '아무것도 입력하지 않았으므로 다시 입력해주세요.',
-  EXIST_SPACE: '입력한 숫자에 공백이 존재합니다.',
+  EMPTY_VALUES: '아무것도 입력하지 않았으므로 다시 입력해주세요.',
+  EXIST_SPACE: '입력한 값에 공백이 존재합니다.',
   AVAILABLE_NUMBER: '숫자만 입력이 가능합니다',
   AVAILABLE_DIGIT: `숫자는 ${GAME_TERMS.BALL.DIGIT}자리만 가능합니다.`,
   INVALID_RANGE: `입력한 숫자는 ${GAME_TERMS.BALL.MIN_VALUE}~${GAME_TERMS.BALL.MAX_VALUE}의 범위를 가져야 합니다.`,
   EXIST_DUPLICATE_VALUE: '입력한 숫자에 중복된 값이 존재합니다.',
+  INVALID_USER_COMMAND: `명령어는 ${GAME_TERMS.USER_COMMANDS.RESTART}번 또는 ${GAME_TERMS.USER_COMMANDS.EXIT}번만 가능합니다.`,
 });
 
 module.exports = { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE };

@@ -28,7 +28,6 @@ class BallComparator {
   }
 
   compareBalls(userBall) {
-    console.log(userBall, this.#computerBall);
     return this.#calculateComparisonResult(userBall);
   }
 }

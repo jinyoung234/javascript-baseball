@@ -21,6 +21,10 @@ const isValidNumberRange = (value) =>
 const isDuplicateNumbers = (value) =>
   new Set(value.split(SYMBOLS.EMPTY_STRING)).size < GAME_TERMS.BALL.DIGIT;
 
+const isValidUserCommand = (value) =>
+  Number(value) === GAME_TERMS.USER_COMMANDS.RESTART ||
+  Number(value) === GAME_TERMS.USER_COMMANDS.EXIT;
+
 module.exports = {
   isEmptyInputValue,
   isExistSpace,
@@ -28,4 +32,5 @@ module.exports = {
   isValidDigit,
   isValidNumberRange,
   isDuplicateNumbers,
+  isValidUserCommand,
 };
