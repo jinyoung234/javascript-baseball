@@ -20,6 +20,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
+    'consistent-return': ['off'],
     // 들여쓰기 깊이 제한
     'max-depth': ['error', 2],
   },
