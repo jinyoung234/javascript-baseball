@@ -77,11 +77,15 @@ class App {
     this.#printExitGame();
   }
 
+  *#restartGame() {
+    this.#init();
+    yield* this.#run();
+  }
+
   *#processUserCommand() {
     const userCommand = yield* this.#inputUserCommand();
     if (userCommand === GAME_TERMS.USER_COMMANDS.RESTART) {
-      this.#init();
-      yield* this.#run();
+      yield* this.#restartGame();
     }
     Console.close();
   }
