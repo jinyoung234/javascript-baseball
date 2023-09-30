@@ -37,7 +37,7 @@ class App {
   }
 
   #printGameResult(result) {
-    this.#outputView.print(result);
+    this.#outputView.printGameResult(result);
   }
 
   *#inputUserBall() {

@@ -8,7 +8,9 @@ const OutputView = {
   printStartGame() {
     this.print(OUTPUT_MESSAGE.GAME_START);
   },
-
+  printGameResult(result) {
+    this.print(result);
+  },
   printExitGame() {
     this.print(OUTPUT_MESSAGE.GAME_EXIT);
   },
