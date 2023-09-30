@@ -67,12 +67,14 @@ class App {
   }
 
   *#processGame() {
+    this.#printStartGame();
     while (true) {
       const userBall = yield* this.#inputUserBall();
       const result = this.#getComparisonResult(userBall);
       this.#printGameResult(result);
       if (result === GAME_TERMS.EXIT_CONDITION) break;
     }
+    this.#printExitGame();
   }
 
   *#processUserCommand() {
@@ -81,13 +83,11 @@ class App {
       this.#init();
       yield* this.#run();
     }
-    if (userCommand === GAME_TERMS.USER_COMMANDS.EXIT) Console.close();
+    Console.close();
   }
 
   *#run() {
-    this.#printStartGame();
     yield* this.#processGame();
-    this.#printExitGame();
     yield* this.#processUserCommand();
   }
 
