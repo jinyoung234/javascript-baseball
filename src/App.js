@@ -62,21 +62,13 @@ class App {
     }
   }
 
-  *#getUserBall() {
-    return yield* this.#inputUserBall();
-  }
-
-  *#getUserCommand() {
-    return yield* this.#inputUserCommand();
-  }
-
   #getComparisonResult(userBall) {
     return this.#baseballGameService.calculateComparisonResult(userBall);
   }
 
-  *#startGame() {
+  *#processGame() {
     while (true) {
-      const userBall = yield* this.#getUserBall();
+      const userBall = yield* this.#inputUserBall();
       const result = this.#getComparisonResult(userBall);
       this.#printGameResult(result);
       if (result === GAME_TERMS.EXIT_CONDITION) break;
@@ -84,7 +76,7 @@ class App {
   }
 
   *#processUserCommand() {
-    const userCommand = yield* this.#getUserCommand();
+    const userCommand = yield* this.#inputUserCommand();
     if (userCommand === GAME_TERMS.USER_COMMANDS.RESTART) {
       this.#init();
       yield* this.#run();
@@ -94,7 +86,7 @@ class App {
 
   *#run() {
     this.#printStartGame();
-    yield* this.#startGame();
+    yield* this.#processGame();
     this.#printExitGame();
     yield* this.#processUserCommand();
   }
