@@ -17,13 +17,14 @@ class BallComparator {
 
   #calculateComparisonResult(userBall) {
     return this.#computerBall.reduce(
-      ([strike, ball], computerDigit, digit) => {
+      ({ strike, ball }, computerDigit, digit) => {
         const userDigit = userBall[digit];
-        if (userDigit === computerDigit) return [strike + 1, ball];
-        if (this.#computerBall.includes(userDigit)) return [strike, ball + 1];
-        return [strike, ball];
+        if (userDigit === computerDigit) return { strike: strike + 1, ball };
+        if (this.#computerBall.includes(userDigit))
+          return { strike, ball: ball + 1 };
+        return { strike, ball };
       },
-      [0, 0],
+      { strike: 0, ball: 0 },
     );
   }
 

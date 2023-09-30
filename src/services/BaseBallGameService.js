@@ -10,7 +10,7 @@ class BaseBallGameService {
   }
 
   calculateComparisonResult(userBall) {
-    const [strike, ball] = this.#ballComparator.compareBalls(userBall);
+    const { strike, ball } = this.#ballComparator.compareBalls(userBall);
     return (
       [
         [ball, GAME_TERMS.GAME_RESULTS.BALL],
