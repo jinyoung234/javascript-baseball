@@ -15,13 +15,20 @@ class BallComparator {
     ).createBall();
   }
 
+  #isStrike(userBall, digit) {
+    return userBall[digit] === this.#computerBall[digit];
+  }
+
+  #isBall(userBall, digit) {
+    return this.#computerBall.includes(userBall[digit]);
+  }
+
   #calculateComparisonResult(userBall) {
     return this.#computerBall.reduce(
-      ({ strike, ball }, computerDigit, digit) => {
-        const userDigit = userBall[digit];
-        if (userDigit === computerDigit) return { strike: strike + 1, ball };
-        if (this.#computerBall.includes(userDigit))
-          return { strike, ball: ball + 1 };
+      ({ strike, ball }, _, digit) => {
+        if (this.#isStrike(userBall, digit))
+          return { strike: strike + 1, ball };
+        if (this.#isBall(userBall, digit)) return { strike, ball: ball + 1 };
         return { strike, ball };
       },
       { strike: 0, ball: 0 },
