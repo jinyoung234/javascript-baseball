@@ -8,6 +8,10 @@ class BallComparator {
     this.#init();
   }
 
+  static create() {
+    return new BallComparator();
+  }
+
   #init() {
     this.#computerBall = BallMaker.of(
       GAME_TERMS.BALL.MIN_VALUE,
