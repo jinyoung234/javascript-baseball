@@ -11,7 +11,8 @@ const {
 
 const BallValidator = {
   validateBall(ball) {
-    if (isEmptyInputValue(ball)) throw new BallError(ERROR_MESSAGE.EMPTY_BALLS);
+    if (isEmptyInputValue(ball))
+      throw new BallError(ERROR_MESSAGE.EMPTY_VALUES);
     if (isExistSpace(ball)) throw new BallError(ERROR_MESSAGE.EXIST_SPACE);
     if (!isTypeOfNumber(ball))
       throw new BallError(ERROR_MESSAGE.AVAILABLE_NUMBER);
