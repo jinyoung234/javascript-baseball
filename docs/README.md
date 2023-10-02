@@ -28,3 +28,11 @@
 ## 예외 처리 (공통)
 
 - 사용자가 잘못된 값을 입력한 경우 throw문을 사용해 예외를 발생시킨후 애플리케이션은 종료되어야 한다.
+
+# 💻 클래스 다이어그램
+
+![class diagram](https://github.com/woowacourse-precourse/javascript-baseball/assets/87177577/9354bdc4-7a3a-44de-b594-f1877d2094cc)
+
+# 📈 플로우 차트
+
+![flow chart](https://github.com/woowacourse-precourse/javascript-baseball/assets/87177577/4c6572a3-ed3d-4246-bda4-3dcfbb4232c9)
